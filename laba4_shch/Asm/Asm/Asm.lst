@@ -1,0 +1,118 @@
+Microsoft (R) Macro Assembler Version 14.36.32537.0	    04/04/25 22:41:13
+Source.asm						     Page 1 - 1
+
+
+				.586 
+				.MODEL flat,C
+ 00000000			.data
+ 00000000 BF800000			i dd -1.0 ;Начальное значение i цикла
+ 00000004 40000000			iEnd dd 2.0 ;Конечное значение i цикла
+ 00000008 3F19999A			iStep dd 0.6 ;Шаг цикла
+ 0000000C C61C3C00			Max dd -9999.0 ;Максимальное число
+
+					
+ 00000000			.code
+					extern fun:near
+					public FindMax
+
+ 00000000				FindMax proc C
+						
+						;Выгружаем из стека переданное функцией число(Шаг цикла)
+ 00000000  55					push ebp
+ 00000001  8B EC				mov ebp,esp
+
+ 00000003  8B 4D 08				mov ecx, dword ptr [ebp+8]
+ 00000006  89 0D 00000008 R			mov iStep,ecx
+
+ 0000000C					for_start:
+							;Проверка цикла, если i > iEnd выход из цикла
+ 0000000C  D9 05 00000000 R				fld i 
+ 00000012  D9 05 00000004 R				fld iEnd
+ 00000018  DF F1					fcomip st(0),st(1)	
+ 0000001A  DD D8					fstp st(0)
+ 0000001C  72 3F					jb for_end
+
+							;Тело цикла:
+ 0000001E						if_start:
+ 0000001E  51							push ecx
+ 0000001F  FF 35 00000000 R				push dword ptr [i]
+ 00000025  FF 35 00000000 R					push i
+ 0000002B  E8 00000000 E					call fun
+ 00000030  83 C4 04						add esp,4
+ 00000033  D9 05 0000000C R					fld Max
+
+								;Если Max >= f(i), то fasle
+ 00000039  DF F1						fcomip st(0),st(1)
+ 0000003B  73 06						jae false
+
+								;Иначе выполняется запись результата функции как максимального числа:
+ 0000003D  D9 1D 0000000C R					fstp Max
+
+ 00000043						false:
+
+ 00000043  DD D8					fstp st(0)
+						
+
+							;Прибавление к i шага цикла
+ 00000045  D9 05 00000000 R				fld i
+ 0000004B  D9 05 00000008 R				fld iStep 
+ 00000051  D8 C1					fadd st(0),st(1)
+ 00000053  D9 1D 00000000 R				fstp i
+ 00000059  DD D8					fstp st(0)
+
+ 0000005B  EB AF					jmp for_start
+							
+ 0000005D					for_end:
+ 0000005D  D9 05 0000000C R			fld Max;
+ 00000063  8B E5				mov esp,ebp
+ 00000065  5D					pop ebp
+ 00000066  C3					ret
+ 00000067				FindMax endp
+				End
+Microsoft (R) Macro Assembler Version 14.36.32537.0	    04/04/25 22:41:13
+Source.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000010 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000067 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+FindMax  . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000067 Public C
+  for_start  . . . . . . . . . .	L Near	 0000000C _TEXT	
+  if_start . . . . . . . . . . .	L Near	 0000001E _TEXT	
+  false  . . . . . . . . . . . .	L Near	 00000043 _TEXT	
+  for_end  . . . . . . . . . . .	L Near	 0000005D _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000001h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+Max  . . . . . . . . . . . . . .	DWord	 0000000C _DATA	
+fun  . . . . . . . . . . . . . .	L Near	 00000000 FLAT	External C
+iEnd . . . . . . . . . . . . . .	DWord	 00000004 _DATA	
+iStep  . . . . . . . . . . . . .	DWord	 00000008 _DATA	
+i  . . . . . . . . . . . . . . .	DWord	 00000000 _DATA	
+
+	   0 Warnings
+	   0 Errors

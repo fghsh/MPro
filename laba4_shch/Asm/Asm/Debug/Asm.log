@@ -1,0 +1,4 @@
+﻿  Assembling Source.asm...
+  main.cpp
+D:\VSProjects\Asm\Asm\main.cpp(9,14): warning C4305: инициализация: усечение из "double" в "float"
+  Asm.vcxproj -> D:\VSProjects\Asm\Debug\Asm.exe
