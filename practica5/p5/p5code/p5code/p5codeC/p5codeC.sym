@@ -1,0 +1,119 @@
+__Lrdata 5A FFFFFFA9 DATA
+__Hrbss 5A 0 DATA
+__Lrbss 20 0 DATA
+strx_xcopy 76 0 CODE
+__Birdata 3 FFFFFFA9 DATA
+__Hirdata 5A FFFFFFA9 DATA
+__Lirdata 5A FFFFFFA9 DATA
+powerup E9 0 CODE
+__Htext 5A 0
+__Ltext 5A 0
+strx_copy 8C 0 CODE
+__Hcode 5A 0
+__Lcode 5A 0
+ldb_r0 12 0 CODE
+ldc_r0 E 0 CODE
+__Hdata 126 0 CODE
+__Hconst 100 0 CODE
+__Ldata 100 0 CODE
+__Lconst 100 0 CODE
+__Bbss 5A 0 XDATA
+ldb_r1 1F 0 CODE
+ldc_r1 1B 0 CODE
+__Hbss 5A 0 XDATA
+__Hstrings 144 0 CODE
+ldb_r2 2C 0 CODE
+ldc_r2 28 0 CODE
+__Lbss 5A 0 XDATA
+__Lstrings 126 0 CODE
+ldb_r3 39 0 CODE
+ldc_r3 35 0 CODE
+ldb_r4 46 0 CODE
+ldc_r4 42 0 CODE
+ldb_r5 53 0 CODE
+ldc_r5 4F 0 CODE
+str_xcopy 76 0 CODE
+__S0 337 0
+ldb_r6 60 0 CODE
+ldc_r6 5C 0 CODE
+ldb_r7 6D 0 CODE
+ldc_r7 69 0 CODE
+start1 D5 0 CODE
+__Hnvram 5A 0 XDATA
+small_model 1 0
+__Lnvram 5A 0 XDATA
+ldc_byte 3 0 CODE
+__Hheap 5A 0 XDATA
+__Lheap 5A 0 XDATA
+_main 144 0 CODE
+str_copy 8C 0 CODE
+awmul B7 0 CODE
+?a_main 20 0 DATA
+lwmul B7 0 CODE
+_exit E6 0 CODE
+start 0 0 CODE
+intlevel0 0 0
+strx_load 8C 0 CODE
+__Brbit 20 20 BITSEG
+str_load 8C 0 CODE
+__Hrbit 0 20 BITSEG
+intlevel1 0 0
+__Hvectors 3 0 CODE
+__Lrbit 0 20 BITSEG
+__Lvectors 0 0 CODE
+__Bidata 5A 0 DATA
+__Hidata 5A 0 DATA
+__Lidata 5A 0 DATA
+stack_internal 1 0
+__Brdata 3 FFFFFFA9 DATA
+__Hrdata 5A FFFFFFA9 DATA
+%segments
+vectors 0 EB CODE
+rbit 0 39 BITSEG
+data 100 336 CODE
+%locals
+G:\Çולצמג\p5\p5\p5code\p5code\p5codeC\main_0.obj
+G:\Çולצמג\p5\p5\p5code2\p5codeC\main.c
+3 144 0 CODE
+14 147 0 CODE
+21 156 0 CODE
+26 165 0 CODE
+27 174 0 CODE
+28 17A 0 CODE
+29 17D 0 CODE
+31 180 0 CODE
+32 183 0 CODE
+33 186 0 CODE
+34 189 0 CODE
+35 18C 0 CODE
+36 18F 0 CODE
+38 192 0 CODE
+39 198 0 CODE
+40 19E 0 CODE
+42 1A3 0 CODE
+43 1A6 0 CODE
+45 1A9 0 CODE
+47 1BF 0 CODE
+49 1C6 0 CODE
+50 1DC 0 CODE
+51 1EA 0 CODE
+52 1F0 0 CODE
+53 205 0 CODE
+54 212 0 CODE
+52 217 0 CODE
+55 22D 0 CODE
+56 24B 0 CODE
+58 255 0 CODE
+59 25A 0 CODE
+60 281 0 CODE
+61 29D 0 CODE
+62 2A4 0 CODE
+63 2D6 0 CODE
+64 2D9 0 CODE
+61 2DC 0 CODE
+66 2F6 0 CODE
+67 2FC 0 CODE
+49 302 0 CODE
+45 319 0 CODE
+41 330 0 CODE
+73 333 0 CODE

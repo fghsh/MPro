@@ -1,0 +1,454 @@
+
+
+HI-TECH Software 8051 Macro Assembler V9.60                                Page 1
+                                                       Thu Jun 19 19:41:09 2025
+
+     1                           	psect	idata,class=DATA,space=1,limit=080h
+     2                           	psect	irdata,class=DATA,limit=080h
+     3                           	global	_msec
+     4                           	signat	_msec,4216
+     5                           	global	stack_internal
+     6                           	psect	text,class=CODE
+     7                           	psect	text
+     8                           	file	"G:\Çולצמג\practica9\practic9\pr9\pr9\main
+                                 .c"
+     9                           	line	3
+    10  00003                     _msec:
+    11  00003  80 33              	j	f1411
+    12  00005                     f1410:
+    13                           ;main.c: 2: void msec (int x)
+    14                           
+    15                           ;main.c: 3: {
+    16                           
+    17                           ;main.c: 4: while(x-->0)
+    18                           
+    19                           ;	var   _x assigned to ?a_msec+0
+    20                           ;_x stored from WR2
+    21  00005  8C 20              	mov	?a_msec+0,r4
+    22  00007  8D 21              	mov	?a_msec+0+1,r5
+    23                           	line	4
+    24  00009  80 13              	jmp	l3
+    25  0000B                     l4:
+    26                           ;main.c: 5: {
+    27                           
+    28                           ;main.c: 6: TH0 = (-200)>>8;
+    29                           
+    30                           	line	6
+    31  0000B  75 8C FF           	mov	08Ch,#255
+    32                           ;main.c: 7: TL0=-200;
+    33                           
+    34                           	line	7
+    35  0000E  75 8A 38           	mov	08Ah,#56
+    36                           ;main.c: 8: TR0=1;
+    37                           
+    38                           	line	8
+    39  00011  D2 8C              	setb	tcon.4
+    40                           ;main.c: 9: do;
+    41                           
+    42                           	line	9
+    43  00013                     l8:
+    44                           ;main.c: 10: while(TF0==0);
+    45                           
+    46                           	line	10
+    47  00013  30 8D 02           	bnb	tcon.5, u11
+    48  00016  80 02              	jmp	u10
+    49  00018                     u11:
+    50  00018  80 F9              	jmp	l8
+    51  0001A                     u10:
+    52  0001A                     l7:
+    53                           ;main.c: 11: TF0=0;
+    54                           
+    55                           	line	11
+    56  0001A  C2 8D              	clr	tcon.5
+    57                           ;main.c: 12: TR0=0;
+    58                           
+    59                           	line	12
+    60  0001C  C2 8C              	clr	tcon.4
+    61                           	line	13
+    62  0001E                     l3:
+    63                           	line	4
+    64  0001E  AC 20              	mov	r4,?a_msec+0
+    65  00020  E5 21              	mov	a,?a_msec+0+1
+    66  00022  FD                 	mov	r5,a
+    67  00023  15 21              	dec	?a_msec+0+1
+    68  00025  70 02              	jnz	u24
+    69  00027  15 20              	dec	?a_msec+0
+    70  00029                     u24:
+    71  00029  ED                 	mov	a,r5
+    72  0002A  24 FF              	add	a,#low -(1)
+    73  0002C  EC                 	mov	a,r4
+    74  0002D  64 80              	xrl	a,#80h
+    75  0002F  34 7F              	addc	a,#(high -(1))xor 80h
+    76  00031  40 02              	bc	u31
+    77  00033  80 02              	jmp	u30
+    78  00035                     u31:
+    79  00035  80 D4              	jmp	l4
+    80  00037                     u30:
+    81  00037                     l5:
+    82                           ;main.c: 13: }
+    83                           
+    84                           ;main.c: 14: }
+    85                           
+    86                           	line	14
+    87  00037                     l2:
+    88  00037  22                 	ret
+    89  00038                     f1411:
+    90  00038  80 CB              	j	f1410
+    91                           	FNSIZE	_msec,2,0
+    92                           	global	?a_msec
+    93  0000                     f1412	equ	0
+    94                           ;	param _step assigned to r4/r5 on entry
+    95                           	global	_ts
+    96                           	signat	_ts,4216
+    97                           	line	17
+    98  0003A                     _ts:
+    99  0003A  80 32              	j	f1421
+   100  0003C                     f1420:
+   101                           ;main.c: 16: void ts (int step)
+   102                           
+   103                           ;main.c: 17: {
+   104                           
+   105                           ;main.c: 18: TH0 = (-200)>>8;
+   106                           
+   107                           	line	18
+   108  0003C  75 8C FF           	mov	08Ch,#255
+   109                           ;main.c: 19: P2=P2+step;
+   110                           
+   111                           	line	19
+   112  0003F  E5 05              	mov	a,1+4+0
+   113  00041  25 A0              	add	a,0A0h
+   114  00043  F5 A0              	mov	0A0h,a
+   115                           ;main.c: 20: TL0=-200;
+   116                           
+   117                           	line	20
+   118  00045  75 8A 38           	mov	08Ah,#56
+   119                           ;main.c: 21: P2=P2+step;
+   120                           
+   121                           	line	21
+   122  00048  E5 05              	mov	a,1+4+0
+   123  0004A  25 A0              	add	a,0A0h
+   124  0004C  F5 A0              	mov	0A0h,a
+   125                           ;main.c: 22: TR0=1;
+   126                           
+   127                           	line	22
+   128  0004E  D2 8C              	setb	tcon.4
+   129                           ;main.c: 23: P2=P2+step;
+   130                           
+   131                           	line	23
+   132  00050  E5 05              	mov	a,1+4+0
+   133  00052  25 A0              	add	a,0A0h
+   134  00054  F5 A0              	mov	0A0h,a
+   135                           ;main.c: 24: while(TF0==0)
+   136                           
+   137                           ;	var   _step assigned to ?a_ts+0
+   138                           ;_step stored from WR2
+   139                           	line	24
+   140  00056  8C 20              	mov	?a_ts+0,r4
+   141  00058  8D 21              	mov	?a_ts+0+1,r5
+   142  0005A  80 06              	jmp	l10
+   143  0005C                     l11:
+   144                           ;main.c: 25: {
+   145                           
+   146                           ;main.c: 26: P2=P2+step;
+   147                           
+   148                           	line	26
+   149  0005C  E5 21              	mov	a,?a_ts+0+1
+   150  0005E  25 A0              	add	a,0A0h
+   151  00060  F5 A0              	mov	0A0h,a
+   152                           	line	27
+   153  00062                     l10:
+   154                           	line	24
+   155  00062  30 8D 02           	bnb	tcon.5, u41
+   156  00065  80 02              	jmp	u40
+   157  00067                     u41:
+   158  00067  80 F3              	jmp	l11
+   159  00069                     u40:
+   160  00069                     l12:
+   161                           ;main.c: 27: }
+   162                           
+   163                           ;main.c: 28: TF0=0;
+   164                           
+   165                           	line	28
+   166  00069  C2 8D              	clr	tcon.5
+   167                           ;main.c: 29: TR0=0;
+   168                           
+   169                           	line	29
+   170  0006B  C2 8C              	clr	tcon.4
+   171                           ;main.c: 30: }
+   172                           
+   173                           	line	30
+   174  0006D                     l9:
+   175  0006D  22                 	ret
+   176  0006E                     f1421:
+   177  0006E  80 CC              	j	f1420
+   178                           	FNSIZE	_ts,2,0
+   179                           	global	?a_ts
+   180  0000                     f1422	equ	0
+   181                           	global	_main
+   182                           	signat	_main,88
+   183                           	line	33
+   184  00070                     _main:
+   185  00070  80 29              	j	f1431
+   186  00072                     f1430:
+   187                           ;main.c: 32: void main()
+   188                           
+   189                           ;main.c: 33: {
+   190                           
+   191                           ;main.c: 34: TMOD=0x1;
+   192                           
+   193                           	line	34
+   194  00072  75 89 01           	mov	089h,#1
+   195                           ;main.c: 37: P2=0;
+   196                           
+   197                           	line	37
+   198  00075  75 A0 00           	mov	0A0h,#0
+   199                           ;main.c: 38: msec(1);
+   200                           
+   201                           	FNCALL	_main,_msec
+   202                           	line	38
+   203  00078  7C 00              	mov	r4,#high (1)
+   204  0007A  7D 01              	mov	r5,#low (1)
+   205  0007C  12 0003            	lcall	_msec
+   206                           
+   207                           ;main.c: 39: ts(7);
+   208                           
+   209                           	FNCALL	_main,_ts
+   210                           	line	39
+   211  0007F  7C 00              	mov	r4,#high (7)
+   212  00081  7D 07              	mov	r5,#low (7)
+   213  00083  12 003A            	lcall	_ts
+   214                           
+   215                           ;main.c: 42: P2=0;
+   216                           
+   217                           	line	42
+   218  00086  75 A0 00           	mov	0A0h,#0
+   219                           ;main.c: 43: msec(2);
+   220                           
+   221                           	line	43
+   222  00089  7C 00              	mov	r4,#high (2)
+   223  0008B  7D 02              	mov	r5,#low (2)
+   224  0008D  12 0003            	lcall	_msec
+   225                           
+   226                           ;main.c: 44: P2=96;
+   227                           
+   228                           	line	44
+   229  00090  75 A0 60           	mov	0A0h,#96
+   230                           ;main.c: 45: ts(-3);
+   231                           
+   232                           	line	45
+   233  00093  7C FF              	mov	r4,#high (-3)
+   234  00095  7D FD              	mov	r5,#low (-3)
+   235  00097  12 003A            	lcall	_ts
+   236                           
+   237                           ;main.c: 47: }
+   238                           
+   239                           	line	47
+   240  0009A                     l13:
+   241  0009A  22                 	ret
+   242  0009B                     f1431:
+   243  0009B  80 D5              	j	f1430
+   244  0000                     f1432	equ	0
+   245  0000                     _A10	equ	162
+   246  0000                     _A11	equ	163
+   247  0000                     _A12	equ	164
+   248  0000                     _A13	equ	165
+   249  0000                     _A14	equ	166
+   250  0000                     _A15	equ	167
+   251  0000                     _A8	equ	160
+   252  0000                     _A9	equ	161
+   253  0000                     _AC	equ	214
+   254  0000                     _ACC0	equ	224
+   255  0000                     _ACC1	equ	225
+   256  0000                     _ACC2	equ	226
+   257  0000                     _ACC3	equ	227
+   258  0000                     _ACC4	equ	228
+   259  0000                     _ACC5	equ	229
+   260  0000                     _ACC6	equ	230
+   261  0000                     _ACC7	equ	231
+   262  0000                     _AD0	equ	128
+   263  0000                     _AD1	equ	129
+   264  0000                     _AD2	equ	130
+   265  0000                     _AD3	equ	131
+   266  0000                     _AD4	equ	132
+   267  0000                     _AD5	equ	133
+   268  0000                     _AD6	equ	134
+   269  0000                     _AD7	equ	135
+   270  0000                     _B0	equ	240
+   271  0000                     _B1	equ	241
+   272  0000                     _B2	equ	242
+   273  0000                     _B3	equ	243
+   274  0000                     _B4	equ	244
+   275  0000                     _B5	equ	245
+   276  0000                     _B6	equ	246
+   277  0000                     _B7	equ	247
+   278  0000                     _CY	equ	215
+   279  0000                     _EA	equ	175
+   280  0000                     _ES	equ	172
+   281  0000                     _ET0	equ	169
+   282  0000                     _ET1	equ	171
+   283  0000                     _EX0	equ	168
+   284  0000                     _EX1	equ	170
+   285  0000                     _F0	equ	213
+   286  0000                     _IE0	equ	137
+   287  0000                     _IE1	equ	139
+   288  0000                     _INT0	equ	178
+   289  0000                     _INT1	equ	179
+   290  0000                     _IT0	equ	136
+   291  0000                     _IT1	equ	138
+   292  0000                     _OV	equ	210
+   293  0000                     _P	equ	208
+   294  0000                     _P00	equ	128
+   295  0000                     _P01	equ	129
+   296  0000                     _P02	equ	130
+   297  0000                     _P03	equ	131
+   298  0000                     _P04	equ	132
+   299  0000                     _P05	equ	133
+   300  0000                     _P06	equ	134
+   301  0000                     _P07	equ	135
+   302  0000                     _P10	equ	144
+   303  0000                     _P11	equ	145
+   304  0000                     _P12	equ	146
+   305  0000                     _P13	equ	147
+   306  0000                     _P14	equ	148
+   307  0000                     _P15	equ	149
+   308  0000                     _P16	equ	150
+   309  0000                     _P17	equ	151
+   310  0000                     _P20	equ	160
+   311  0000                     _P21	equ	161
+   312  0000                     _P22	equ	162
+   313  0000                     _P23	equ	163
+   314  0000                     _P24	equ	164
+   315  0000                     _P25	equ	165
+   316  0000                     _P26	equ	166
+   317  0000                     _P27	equ	167
+   318  0000                     _P30	equ	176
+   319  0000                     _P31	equ	177
+   320  0000                     _P32	equ	178
+   321  0000                     _P33	equ	179
+   322  0000                     _P34	equ	180
+   323  0000                     _P35	equ	181
+   324  0000                     _P36	equ	182
+   325  0000                     _P37	equ	183
+   326  0000                     _PS	equ	188
+   327  0000                     _PT0	equ	185
+   328  0000                     _PT1	equ	187
+   329  0000                     _PX0	equ	184
+   330  0000                     _PX1	equ	186
+   331  0000                     _RB8	equ	154
+   332  0000                     _RD	equ	183
+   333  0000                     _REN	equ	156
+   334  0000                     _RI	equ	152
+   335  0000                     _RS0	equ	211
+   336  0000                     _RS1	equ	212
+   337  0000                     _RXD	equ	176
+   338  0000                     _SM0	equ	159
+   339  0000                     _SM1	equ	158
+   340  0000                     _SM2	equ	157
+   341  0000                     _T0	equ	180
+   342  0000                     _T1	equ	181
+   343  0000                     _TB8	equ	155
+   344  0000                     _TF0	equ	141
+   345  0000                     _TF1	equ	143
+   346  0000                     _TI	equ	153
+   347  0000                     _TR0	equ	140
+   348  0000                     _TR1	equ	142
+   349  0000                     _TXD	equ	177
+   350  0000                     _WR	equ	182
+   351  0000                     _ACC	equ	224
+   352  0000                     _B	equ	240
+   353  0000                     _DPH	equ	131
+   354  0000                     _DPL	equ	130
+   355  0000                     _IE	equ	168
+   356  0000                     _IP	equ	184
+   357  0000                     _P0	equ	128
+   358  0000                     _P1	equ	144
+   359  0000                     _P2	equ	160
+   360  0000                     _P3	equ	176
+   361  0000                     _PCON	equ	135
+   362  0000                     _PSW	equ	208
+   363  0000                     _SBUF	equ	153
+   364  0000                     _SCON	equ	152
+   365  0000                     _SP	equ	129
+   366  0000                     _TCON	equ	136
+   367  0000                     _TH0	equ	140
+   368  0000                     _TH1	equ	141
+   369  0000                     _TL0	equ	138
+   370  0000                     _TL1	equ	139
+   371  0000                     _TMOD	equ	137
+   372  0000                     _ACC_BITS	equ	224
+   373  0000                     _B_BITS	equ	240
+   374  0000                     _IE_BITS	equ	168
+   375  0000                     _IP_BITS	equ	184
+   376  0000                     _P0_BITS	equ	128
+   377  0000                     _P1_BITS	equ	144
+   378  0000                     _P2_BITS	equ	160
+   379  0000                     _P3_BITS	equ	176
+   380  0000                     _PCON_BITS	equ	135
+   381  0000                     _PSW_BITS	equ	208
+   382  0000                     _SCON_BITS	equ	152
+   383  0000                     _TCON_BITS	equ	136
+   384  0000                     _TMOD_BITS	equ	137
+
+
+HI-TECH Software 8051 Macro Assembler V9.60                                Page 2
+Symbol Table                                           Thu Jun 19 19:41:09 2025
+
+            _B 000F0              l2 00037              l3 0001E  
+            l4 0000B              l5 00037              _P 000D0  
+            l7 0001A              l8 00013              l9 0006D  
+       ?a_msec 00020             _B0 000F0             _B1 000F1  
+           _B2 000F2             _B3 000F3             _B4 000F4  
+           _B5 000F5             _B6 000F6             _A8 000A0  
+           _B7 000F7             _A9 000A1             _F0 000D5  
+           _AC 000D6             l10 00062             l11 0005C  
+           l12 00069             l13 0009A             _EA 000AF  
+           _P0 00080             _P1 00090             _P2 000A0  
+           _P3 000B0             _IE 000A8             _T0 000B4  
+           _T1 000B5             _ES 000AC             _CY 000D7  
+           _IP 000B8             _RD 000B7             u10 0001A  
+           u11 00018             _RI 00098             u30 00037  
+           u31 00035             u40 00069             u24 00029  
+           _TI 00099             u41 00067             _PS 000BC  
+           _OV 000D2             _SP 00081             _WR 000B6  
+           _ts 0003A         _B_BITS 000F0            _A10 000A2  
+          _A11 000A3            _A12 000A4            _A13 000A5  
+          _A14 000A6            _A15 000A7            _AD0 00080  
+          _AD1 00081            _AD2 00082            _AD3 00083  
+          _AD4 00084            _AD5 00085            _AD6 00086  
+          _AD7 00087            _ACC 000E0            _P00 00080  
+          _P01 00081            _P10 00090            _P02 00082  
+          _P11 00091            _P03 00083            _P20 000A0  
+          _P12 00092            _P04 00084            _P21 000A1  
+          _P13 00093            _P05 00085            _P30 000B0  
+          _P22 000A2            _P14 00094            _P06 00086  
+          _P31 000B1            _P23 000A3            _P15 00095  
+          _P07 00087            _P32 000B2            _P24 000A4  
+          _P16 00096            _P33 000B3            _P25 000A5  
+          _P17 00097            _P34 000B4            _P26 000A6  
+          _P35 000B5            _P27 000A7            _P36 000B6  
+          _P37 000B7            _IE0 00089            _IE1 0008B  
+          _ET0 000A9            _ET1 000AB            _EX0 000A8  
+          _EX1 000AA            _DPH 00083            _DPL 00082  
+          _IT0 00088            _IT1 0008A            _RB8 0009A  
+          _TF0 0008D            _TB8 0009B            _TF1 0008F  
+          _TH0 0008C            _TH1 0008D            _SM0 0009F  
+          _SM1 0009E            _TL0 0008A            _SM2 0009D  
+          _PT0 000B9            _TL1 0008B            _PT1 000BB  
+          _RS0 000D3            _RS1 000D4            _REN 0009C  
+          _PX0 000B8            _PX1 000BA            _TR0 0008C  
+          _TR1 0008E            _RXD 000B0            _PSW 000D0  
+          _TXD 000B1        _P0_BITS 00080        _P1_BITS 00090  
+      _P2_BITS 000A0        _P3_BITS 000B0        _IE_BITS 000A8  
+     _ACC_BITS 000E0        _IP_BITS 000B8           f1410 00005  
+         f1411 00038           f1420 0003C           f1412 00000  
+         f1421 0006E           f1430 00072           f1422 00000  
+         f1431 0009B           f1432 00000           _ACC0 000E0  
+         _ACC1 000E1           _ACC2 000E2           _ACC3 000E3  
+         _ACC4 000E4           _ACC5 000E5           _ACC6 000E6  
+         _ACC7 000E7           ?a_ts 00020  stack_internal 00001  
+         _INT0 000B2           _INT1 000B3           _PCON 00087  
+         _SCON 00098           _SBUF 00099           _TCON 00088  
+         _TMOD 00089           _main 00070           _msec 00003  
+     _PSW_BITS 000D0      _PCON_BITS 00087      _SCON_BITS 00098  
+    _TCON_BITS 00088      _TMOD_BITS 00089  
+
