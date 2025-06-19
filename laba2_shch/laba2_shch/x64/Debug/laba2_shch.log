@@ -1,0 +1,13 @@
+﻿  Assembling Source.acm...
+Source.acm(1): error A2008: syntax error : .
+Source.acm(2): error A2008: syntax error : .
+Source.acm(3): error A2008: syntax error : .
+Source.acm(23): error A2150: word register cannot be first operand
+Source.acm(25): error A2150: word register cannot be first operand
+Source.acm(27): error A2150: word register cannot be first operand
+Source.acm(29): error A2150: word register cannot be first operand
+Source.acm(31): error A2150: word register cannot be first operand
+Source.acm(33): error A2150: word register cannot be first operand
+Source.acm(84): error A2008: syntax error : Invoke
+Source.acm(70): error A2050: real or BCD number not allowed
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: выход из команды "ml64.exe /c /nologo /Zi /Fo"x64\Debug\Source.obj" /W3 /errorReport:prompt  /TaSource.acm" с кодом "1".
